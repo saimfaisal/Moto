@@ -1,6 +1,8 @@
 import React from 'react';
-import car1 from "../../assets/car1.png"; // ✅ Correct
-import car2 from '../../assets/car2.png';
+import engine from "../../assets/engine.jpeg"; // ✅ Correct
+import headlight from '../../assets/headlight.jpeg';
+import tire from '../../assets/tire.jpeg';
+import wax from '../../assets/wax.jpeg';
 
 import yellowcar from '../../assets/yellowcar.png';
 
@@ -8,28 +10,28 @@ const detailingServices = [
   {
     id: 1,
     title: "HEADLIGHTS",
-    image: car1,  // Fixed: removed curly braces
+    image: headlight,  // Fixed: removed curly braces
     alt: "Headlight polishing service",
     description: "Professional headlight restoration and polishing",
   },
   {
     id: 2,
     title: "ENGINE WASH",
-    image: car2,  // Fixed: removed curly braces
+    image: engine,  // Fixed: removed curly braces
     alt: "Engine cleaning service",
     description: "Deep engine bay cleaning and degreasing",
   },
   {
     id: 3,
     title: "TIRE SHINE",
-    image: car1,  // Fixed: removed curly braces
+    image: tire,  // Fixed: removed curly braces
     alt: "Tire shining service",
     description: "Premium tire cleaning and shine treatment",
   },
   {
     id: 4,
     title: "CAR WAX",
-    image: yellowcar,  // Fixed: removed curly braces
+    image: wax,  // Fixed: removed curly braces
     alt: "Car waxing service",
     description: "Professional car waxing and paint protection",
   },
