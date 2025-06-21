@@ -4,6 +4,7 @@ import Hero from './components/Hero/Hero';
 import About from './components/About/About';
 import Services from './components/Services/Services';
 import DetailingServices from './components/DetailingServices/DetailingServices';
+import Component from "./components/Carwash/Carwash.jsx";
 
 
 import AOS from "aos";
@@ -46,6 +47,7 @@ function App() {
       <About />
       <Services />
      <DetailingServices/>
+     < Component/>
     </div>
   );
 }

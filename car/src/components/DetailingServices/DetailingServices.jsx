@@ -3,6 +3,10 @@ import engine from "../../assets/engine.jpeg"; // ✅ Correct
 import headlight from '../../assets/headlight.jpeg';
 import tire from '../../assets/tire.jpeg';
 import wax from '../../assets/wax.jpeg';
+import fullwax from "../../assets/fullwax.jpeg"; 
+import handwash from '../../assets/handwash.jpeg';
+import inter from '../../assets/inter.jpeg';
+import vacum from "../../assets/vacum.jpeg";
 
 import yellowcar from '../../assets/yellowcar.png';
 
@@ -35,11 +39,41 @@ const detailingServices = [
     alt: "Car waxing service",
     description: "Professional car waxing and paint protection",
   },
+
+  {
+    id: 5,
+    title: "PAINT PROTECTION FILM",
+    image: fullwax,  // Fixed: removed curly braces
+    alt: "Headlight polishing service",
+    description: "Protect the paint from scratches, chips, and other damage.",
+  },
+  {
+    id: 6,
+    title: "INTERIOR WIPE",
+    image: inter,  // Fixed: removed curly braces
+    alt: "Engine cleaning service",
+    description: "All-in-one wipes for dashboards, consoles, and more",
+  },
+  {
+    id: 7,
+    title: "HAND WASH",
+    image: handwash,  // Fixed: removed curly braces
+    alt: "Tire shining service",
+    description: " Highlights the desirable result",
+  },
+  {
+    id: 8,
+    title: "VACUUM INTERIOR",
+    image: vacum,  // Fixed: removed curly braces
+    alt: "Car waxing service",
+    description: "Restores freshness, improves hygiene, protects upholstery.",
+  },
+  
 ];
 
 const DetailingServices = () => {
   return (
-    <div className="conatiner dark:bg-neutral-800 bg-slate-200 dark:text-white duration-300 sm:min-h-[700px] sm:grid-cols-2 place-items-center">
+    <div className="conatiner dark:bg-neutral-800 bg-slate-200 dark:text-white duration-300 sm:min-h-[500px] sm:grid-cols-2 place-items-center">
       <div className="container mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -89,15 +123,7 @@ const DetailingServices = () => {
           ))}
         </div>
 
-        {/* Call to Action Section */}
-        <div
-       data-aos="fade-up"
-           data-aos-delay = "1500"
-        className="text-center mt-16">
-          <button className="btn text-primary px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary">
-            Book Your Service Today
-          </button>
-        </div>
+       
       </div>
     </div>
   );
