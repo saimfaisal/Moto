@@ -36,8 +36,6 @@ function Navbar({theme,setTheme}) {
                         {
                             Navlink.map((data)=> ( <li className='py-4' key={data.id}><a className='inline-block py-2 hover:border-b-2 hover:text-primary hover:border-primary transition-colors duration-500 text-lg font-medium' href={data.link}>{data.name}</a></li>))
                         }
-                       
-                         
                     </ul>
                 </div>
                 <div>
@@ -48,13 +46,11 @@ function Navbar({theme,setTheme}) {
                             (<BiSolidMoon
                             onClick={()=> setTheme("dark")}
                                  className='text-2xl'/>)
-                    }
-                   
+                    } 
                 </div>
             </div>
         </div>
     </nav>
   )
 }
-
 export default Navbar

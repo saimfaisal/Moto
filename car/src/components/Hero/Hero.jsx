@@ -36,5 +36,4 @@ const Hero = ({theme}) => {
     </div>
   )
 }
-
 export default Hero

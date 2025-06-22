@@ -122,8 +122,6 @@ const DetailingServices = () => {
             </div>
           ))}
         </div>
-
-       
       </div>
     </div>
   );
