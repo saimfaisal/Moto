@@ -5,6 +5,7 @@ import About from './components/About/About';
 import Services from './components/Services/Services';
 import DetailingServices from './components/DetailingServices/DetailingServices';
 import Component from "./components/Carwash/Carwash.jsx";
+import Contact from "./components/Contact/Contact.jsx"
 
 
 import AOS from "aos";
@@ -48,6 +49,7 @@ function App() {
       <Services />
      <DetailingServices/>
      < Component/>
+     <Contact/>
     </div>
   );
 }
