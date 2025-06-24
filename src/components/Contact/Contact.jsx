@@ -103,6 +103,10 @@ export default function Contact() {
               </form>
             </div>
           </div>
+<div>
+  {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54388.13041148471!2d74.3473152!3d31.571968000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391905aa15654d4b%3A0x3c163575197cfdc4!2scmh%20lahore!5e0!3m2!1sen!2s!4v1750765451042!5m2!1sen!2s" width="600" height="450"  allowFullScreen  loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe> */}
+</div>
+
         </div>
       </section>
     </div>
