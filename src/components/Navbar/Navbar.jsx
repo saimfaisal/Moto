@@ -13,15 +13,17 @@ const Navlink =[
     },
      {
         id : "3",
-        name: "CARS",
-        link:"/#cars"
+        name: "CAR DETAILING",
+        link:"/#cardetail"
     },
      {
-        id : "1",
-        name: "BOOKING  ",
-        link:"/#booking"
+        id : "4",
+        name: "CONTACT US  ",
+        link:"/#contactus"
     },
 ]
+
+
 function Navbar({theme,setTheme}) {
   return (
     <nav className='shadow-md bg-white 
