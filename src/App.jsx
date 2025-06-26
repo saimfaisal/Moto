@@ -107,6 +107,7 @@ function App() {
       <Contact />
 
       {/* Authentication Modals */}
+      <h1>test</h1>
       <Login isOpen={showLogin} onClose={closeModals} onLogin={handleLogin} onSwitchToSignup={switchToSignup} />
       <Signup isOpen={showSignup} onClose={closeModals} onSignup={handleSignup} onSwitchToLogin={switchToLogin} />
     </div>

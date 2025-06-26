@@ -24,7 +24,7 @@ const Navlink =[
 ]
 
 
-function Navbar({theme,setTheme}) {
+function Navbar({theme,setTheme,onLoginClick,onSignupClick}) {
   return (
     <nav className='shadow-md bg-white 
     dark:bg-black dark:text-white duration-500'>
@@ -40,7 +40,7 @@ function Navbar({theme,setTheme}) {
                         }
                     </ul>
                 </div>
-                <div>
+                <div className='flex gap-3'>
                     {
                         theme === "dark"?(<BiSolidSun
                             onClick={()=> setTheme("light")}
@@ -49,8 +49,12 @@ function Navbar({theme,setTheme}) {
                             onClick={()=> setTheme("dark")}
                                  className='text-2xl'/>)
                     } 
+                    <button onClick={onLoginClick} className='btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary'>login</button>
+                <button onClick={onSignupClick}className='btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary' >Signup</button>
                 </div>
+                
             </div>
+            
         </div>
     </nav>
   )
