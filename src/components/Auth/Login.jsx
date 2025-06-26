@@ -3,6 +3,8 @@ import React ,{ useState } from "react"
 import { X, Eye, EyeOff } from "lucide-react"
 
 function Login({ isOpen, onClose, onLogin, onSwitchToSignup }) {
+
+  // return "login"
   const [formData, setFormData] = useState({
     email: "",
     password: "",
