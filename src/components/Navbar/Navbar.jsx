@@ -40,7 +40,7 @@ function Navbar({theme,setTheme,onLoginClick,onSignupClick}) {
                         }
                     </ul>
                 </div>
-                <div className='flex gap-3'>
+                <div className=''>
                     {
                         theme === "dark"?(<BiSolidSun
                             onClick={()=> setTheme("light")}
@@ -49,10 +49,10 @@ function Navbar({theme,setTheme,onLoginClick,onSignupClick}) {
                             onClick={()=> setTheme("dark")}
                                  className='text-2xl'/>)
                     } 
-                    <button onClick={onLoginClick} className='btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary'>login</button>
-                <button onClick={onSignupClick}className='btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary' >Signup</button>
+                    
                 </div>
-                
+                <button onClick={onLoginClick} className='btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary'>login</button>
+                <button onClick={onSignupClick}className='btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary' >Signup</button>
             </div>
             
         </div>
