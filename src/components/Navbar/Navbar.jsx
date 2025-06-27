@@ -50,6 +50,15 @@ function Navbar({theme,setTheme,onLoginClick,onSignupClick}) {
                                  className='text-2xl'/>)
                     } 
                     
+
+
+
+
+
+
+
+
+                    
                 </div>
                 <div className='flex gap-3'>
                     <button onClick={onLoginClick} className='btn  text-primary  px-3 py-1 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary'>login</button>
