@@ -25,6 +25,16 @@ const Navlink =[
 
 
 function Navbar({theme,setTheme,onLoginClick,onSignupClick}) {
+
+
+
+
+
+
+
+
+
+    
   return (
     <nav className='shadow-md bg-white 
     dark:bg-black dark:text-white duration-500'>
@@ -49,15 +59,6 @@ function Navbar({theme,setTheme,onLoginClick,onSignupClick}) {
                             onClick={()=> setTheme("dark")}
                                  className='text-2xl'/>)
                     } 
-                    
-
-
-
-
-
-
-
-
                     
                 </div>
                 <div className='flex gap-3'>

@@ -89,6 +89,16 @@ function App() {
     setShowLogin(true)
   }
 
+
+
+
+
+
+
+
+
+
+  
   return (
     <div>
       <Navbar
@@ -113,11 +123,5 @@ function App() {
     </div>
   )
 }
-
-
-
-
-
-
 
 export default App
