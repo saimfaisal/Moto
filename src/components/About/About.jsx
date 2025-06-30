@@ -16,7 +16,6 @@ const About = () => {
                 </div>
                 <div>
                     <div 
-                
                     className='space-y-5 sm:p-16 pb-6'> 
                         <h1 
                           data-aos = "fade-up"

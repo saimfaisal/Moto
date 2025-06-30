@@ -88,17 +88,6 @@ function App() {
     setShowSignup(false)
     setShowLogin(true)
   }
-
-
-
-
-
-
-
-
-
-
-  
   return (
     <div>
       <Navbar
@@ -115,9 +104,7 @@ function App() {
       <DetailingServices />
       <Component />
       <Contact />
-
       {/* Authentication Modals */}
-      
       <Login isOpen={showLogin} onClose={closeModals} onLogin={handleLogin} onSwitchToSignup={switchToSignup} />
       <Signup isOpen={showSignup} onClose={closeModals} onSignup={handleSignup} onSwitchToLogin={switchToLogin} />
     </div>

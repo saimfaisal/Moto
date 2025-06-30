@@ -84,7 +84,6 @@ function Login({ isOpen, onClose, onLogin, onSwitchToSignup }) {
             <X className="w-6 h-6" />
           </button>
         </div>
-
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
@@ -98,7 +97,6 @@ function Login({ isOpen, onClose, onLogin, onSwitchToSignup }) {
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
-
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
             <div className="relative">
