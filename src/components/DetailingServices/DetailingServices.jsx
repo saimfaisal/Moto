@@ -8,7 +8,6 @@ import handwash from '../../assets/handwash.jpeg';
 import inter from '../../assets/inter.jpeg';
 import vacum from "../../assets/vacum.jpeg";
 
-import yellowcar from '../../assets/yellowcar.png';
 
 const detailingServices = [
   {

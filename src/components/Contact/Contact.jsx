@@ -52,7 +52,7 @@ export default function Contact() {
                 href="tel:+923227000200"
                 className="dark:text-white text-base md:text-lg transition-colors duration-300 hover:text-primary dark:hover:text-primary"
               >
-                0322-7000200
+                0336-4535700
               </a>
             </div>
           </div>

@@ -22,19 +22,7 @@ const Navlink =[
         link:"/#contactus"
     },
 ]
-
-
 function Navbar({theme,setTheme,onLoginClick,onSignupClick}) {
-
-
-
-
-
-
-
-
-
-    
   return (
     <nav className='shadow-md bg-white 
     dark:bg-black dark:text-white duration-500'>
