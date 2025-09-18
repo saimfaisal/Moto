@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
-import { NavLink } from "react-router-dom"; // ✅ Import NavLink
+import { HiOutlineMenu, HiX } from "react-icons/hi"; // ✅ Mobile menu icons
+import { NavLink } from "react-router-dom";
 
 const Navlink = [
   { id: "1", name: "HOME", link: "/" },
@@ -13,16 +14,18 @@ const Navlink = [
 ];
 
 function Navbar({ theme, setTheme, onLoginClick, onSignupClick }) {
+  const [isOpen, setIsOpen] = useState(false); // ✅ Mobile menu state
+
   return (
     <nav className="shadow-md bg-white dark:bg-black dark:text-white duration-500">
-      <div className="container">
-        <div className="flex justify-between items-center">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center py-3">
           {/* Logo */}
           <div>
             <h1 className="text-3xl font-serif font-bold">MotoBath</h1>
           </div>
 
-          {/* Links */}
+          {/* Desktop Links */}
           <div className="hidden md:block">
             <ul className="flex items-center gap-6">
               {Navlink.map((data) => (
@@ -33,7 +36,7 @@ function Navbar({ theme, setTheme, onLoginClick, onSignupClick }) {
                       `inline-block py-2 transition-colors duration-500 text-lg font-medium 
                       ${
                         isActive
-                          ? "text-primary border-b-2 border-primary" // ✅ Active style
+                          ? "text-primary border-b-2 border-primary"
                           : "hover:text-primary hover:border-b-2 hover:border-primary"
                       }`
                     }
@@ -45,8 +48,9 @@ function Navbar({ theme, setTheme, onLoginClick, onSignupClick }) {
             </ul>
           </div>
 
-          {/* Theme Toggle */}
-          <div>
+          {/* Right Section */}
+          <div className="flex items-center gap-4">
+            {/* Theme Toggle */}
             {theme === "dark" ? (
               <BiSolidSun
                 onClick={() => setTheme("light")}
@@ -58,24 +62,74 @@ function Navbar({ theme, setTheme, onLoginClick, onSignupClick }) {
                 className="text-2xl cursor-pointer"
               />
             )}
-          </div>
 
-          {/* Auth Buttons */}
-          <div className="flex gap-3">
+            {/* Auth Buttons (hidden on small screens) */}
+            <div className="hidden md:flex gap-3">
+              <button
+                onClick={onLoginClick}
+                className="btn text-primary px-3 py-1 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
+              >
+                Login
+              </button>
+              <button
+                onClick={onSignupClick}
+                className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
+              >
+                Signup
+              </button>
+            </div>
+
+            {/* Mobile Menu Button */}
             <button
-              onClick={onLoginClick}
-              className="btn text-primary px-3 py-1 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
+              className="md:hidden text-3xl focus:outline-none"
+              onClick={() => setIsOpen(!isOpen)}
             >
-              Login
-            </button>
-            <button
-              onClick={onSignupClick}
-              className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
-            >
-              Signup
+              {isOpen ? <HiX /> : <HiOutlineMenu />}
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu (Dropdown) */}
+        {isOpen && (
+          <div className="md:hidden bg-white dark:bg-black px-4 py-4 border-t dark:border-neutral-700">
+            <ul className="flex flex-col gap-4">
+              {Navlink.map((data) => (
+                <li key={data.id}>
+                  <NavLink
+                    to={data.link}
+                    className={({ isActive }) =>
+                      `block py-2 text-lg font-medium transition-colors duration-500 
+                      ${
+                        isActive
+                          ? "text-primary border-b-2 border-primary"
+                          : "hover:text-primary"
+                      }`
+                    }
+                    onClick={() => setIsOpen(false)} // close menu after click
+                  >
+                    {data.name}
+                  </NavLink>
+                </li>
+              ))}
+
+              {/* Auth Buttons for Mobile */}
+              <div className="flex flex-col gap-2 mt-4">
+                <button
+                  onClick={onLoginClick}
+                  className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
+                >
+                  Login
+                </button>
+                <button
+                  onClick={onSignupClick}
+                  className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
+                >
+                  Signup
+                </button>
+              </div>
+            </ul>
+          </div>
+        )}
       </div>
     </nav>
   );
