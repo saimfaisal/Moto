@@ -1,7 +1,15 @@
 import React from 'react'
 import car1 from "../../assets/car1.png";
 import yellowcar from "../../assets/yellowcar.png";
+
+
 const Hero = ({theme}) => {
+
+  // const scrollToPricing = () => {
+  //   const section = document.getElementById("pricing");
+  //   if (section) {
+  //     section.scrollIntoView({ behavior: "smooth" });
+  //   }}
   return (
     <div className='dark:bg-black dark:text-white duration-300 relative -z-20'>
         <div className="container min-h-[620px] flex">
@@ -26,10 +34,7 @@ const Hero = ({theme}) => {
                     data-aos = "fade-up"
                     data-aos-delay = "1000"
                     >Our professional cleaners dedicated not simply cleaning your car but restoring your vehicles original appearance, we offer services starting with the basic hand wash all the way to interior and exterior finish restoration.</p>
-                    <button
-                    data-aos = "fade-up"
-                    data-aos-delay = "1500"
-                    className='btn bg-primary text-black px-5 py-2 rounded-md hover:bg-primary/80  duration-300'> Get Started</button>
+                   
                 </div>
             </div>
         </div>
