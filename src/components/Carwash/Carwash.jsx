@@ -1,6 +1,11 @@
 import { Calendar, Smile, Car } from "lucide-react"
 
 export default function Component() {
+   const scrollToPricing = () => {
+    const section = document.getElementById("pricing");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }}
   return (
     <div className="conatiner dark:bg-black bg-white dark:text-white duration-300 sm:min-h-[500px] sm:grid-cols-2 place-items-center">
       {/* Header Section */}
@@ -72,6 +77,7 @@ export default function Component() {
         <button 
          data-aos="fade-up"
            data-aos-delay = "1400"
+           onClick={() => window.location.href = "/booking.html"}
         className="btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-black hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary">
           Book Your Wash Now
         </button>

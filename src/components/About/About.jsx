@@ -1,6 +1,11 @@
 import React from 'react'
 import car2 from '../../assets/car2.png'
 const About = () => {
+  const scrollToPricing = () => {
+    const section = document.getElementById("pricing");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }}
   return (
     <div>
         <div className="conatiner dark:bg-neutral-800 bg-slate-200 dark:text-white duration-300 sm:min-h-[600px] sm:grid-cols-2 place-items-center">
@@ -28,12 +33,7 @@ const About = () => {
                           data-aos = "fade-up"
                           data-aos-delay = "800"
                         >Our professional cleaners dedicated not simply cleaning your car but restoring your vehicles original appearance, we offer services starting with the basic hand wash all the way to interior and exterior finish restoration.</p>
-                        <button 
-                          data-aos = "fade-up"
-                    data-aos-delay = "1200"
-                        className='btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary '>
-                            Get Started
-                        </button>
+                       
                     </div>
                 </div>
             </div>

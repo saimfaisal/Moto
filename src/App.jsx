@@ -1,15 +1,17 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar/Navbar"
 import Hero from "./components/Hero/Hero"
 import About from "./components/About/About"
 import Services from "./components/Services/Services"
 import DetailingServices from "./components/DetailingServices/DetailingServices"
-import Component from "./components/Carwash/Carwash.jsx"
+import Carwash from "./components/Carwash/Carwash.jsx"
 import Contact from "./components/Contact/Contact.jsx"
 import Login from "./components/Auth/Login"
 import Signup from "./components/Auth/Signup"
+import Pricing from "./components/Pricing/Pricing.jsx"
 
 import AOS from "aos"
 import "aos/dist/aos.css"
@@ -88,6 +90,7 @@ function App() {
     setShowSignup(false)
     setShowLogin(true)
   }
+
   return (
     <div>
       <Navbar
@@ -98,15 +101,31 @@ function App() {
         onSignupClick={openSignup}
         onLogout={handleLogout}
       />
-      <Hero theme={theme} />
-      <About />
-      <Services />
-      <DetailingServices />
-      <Component />
-      <Contact />
+
+      {/* React Router Pages */}
+      <Routes>
+        <Route path="/" element={<Hero theme={theme} />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/detailing" element={<DetailingServices />} />
+        <Route path="/carwash" element={<Carwash />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+
       {/* Authentication Modals */}
-      <Login isOpen={showLogin} onClose={closeModals} onLogin={handleLogin} onSwitchToSignup={switchToSignup} />
-      <Signup isOpen={showSignup} onClose={closeModals} onSignup={handleSignup} onSwitchToLogin={switchToLogin} />
+      <Login
+        isOpen={showLogin}
+        onClose={closeModals}
+        onLogin={handleLogin}
+        onSwitchToSignup={switchToSignup}
+      />
+      <Signup
+        isOpen={showSignup}
+        onClose={closeModals}
+        onSignup={handleSignup}
+        onSwitchToLogin={switchToLogin}
+      />
     </div>
   )
 }
