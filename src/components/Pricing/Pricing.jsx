@@ -169,7 +169,7 @@ const Pricing = () => {
 
                   {/* CTA Button */}
                   <button
-                    onClick={() => window.location.href = "/Moto/public/booking.html"}
+                    onClick={() => window.location.href = "/booking.html"}
                     className={`
                       w-full py-3 px-4 rounded-lg font-semibold
                       transition-all duration-300 transform
