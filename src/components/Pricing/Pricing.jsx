@@ -1,7 +1,10 @@
 import React from 'react';
 import { Check, Star, Sparkles, Crown } from 'lucide-react';
+import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 
 const Pricing = () => {
+  const navigate = useNavigate(); // ✅ Hook for navigation
+
   const pricingPlans = [
     {
       id: 1,
@@ -19,7 +22,8 @@ const Pricing = () => {
       ],
       popular: false,
       buttonText: "Select Basic",
-      buttonClass: "btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
+      buttonClass:
+        "btn text-primary px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
     },
     {
       id: 2,
@@ -38,7 +42,8 @@ const Pricing = () => {
       ],
       popular: true,
       buttonText: "Select Standard",
-      buttonClass: "btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
+      buttonClass:
+        "btn text-primary px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
     },
     {
       id: 3,
@@ -58,7 +63,8 @@ const Pricing = () => {
       ],
       popular: false,
       buttonText: "Select Premium",
-      buttonClass: "btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
+      buttonClass:
+        "btn text-primary px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
     },
     {
       id: 4,
@@ -79,35 +85,26 @@ const Pricing = () => {
       ],
       popular: false,
       buttonText: "Go Ultimate",
-      buttonClass: "btn  text-primary  px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
+      buttonClass:
+        "btn text-primary px-5 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
     }
   ];
 
   return (
-    <section id='pricing'>
-      <div id="pricing" className="py-20 dark:bg-black bg-white dark:text-white duration-300 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 bg-gradient-to-b from-accent/20 to-transparent dark:from-accent/10 pointer-events-none" />
-        
+    <section id="pricing">
+      <div className="py-20 dark:bg-black bg-white dark:text-white duration-300 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           {/* Header */}
           <div className="text-center mb-16">
-            <p className="text-primary text-lg font-semibold mb-3" data-aos="fade-up">
+            <p className="text-primary text-lg font-semibold mb-3">
               Choose Your Package
             </p>
-            <h2 
-              className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
               Car Wash Pricing
             </h2>
-            <p 
-              className="text-muted-foreground max-w-2xl mx-auto text-lg"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              Professional car care services tailored to your needs. All packages include our satisfaction guarantee.
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              Professional car care services tailored to your needs. All
+              packages include our satisfaction guarantee.
             </p>
           </div>
 
@@ -116,7 +113,7 @@ const Pricing = () => {
             {pricingPlans.map((plan, index) => (
               <div
                 key={plan.id}
-                className={`relative group ${plan.popular ? 'md:scale-105' : ''}`}
+                className={`relative group ${plan.popular ? "md:scale-105" : ""}`}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
@@ -131,15 +128,21 @@ const Pricing = () => {
                 )}
 
                 {/* Card */}
-                <div className={`
+                <div
+                  className={`
                   relative h-full bg-card dark:bg-card rounded-2xl p-6 
                   transition-all duration-300 overflow-hidden
-                  ${plan.popular ? 'shadow-card-hover border-2 border-primary' : 'shadow-card hover:shadow-card-hover border border-border'}
+                  ${
+                    plan.popular
+                      ? "shadow-card-hover border-2 border-primary"
+                      : "shadow-card hover:shadow-card-hover border border-border"
+                  }
                   group-hover:transform group-hover:-translate-y-2
-                `}>
+                `}
+                >
                   {/* Background Pattern */}
                   <div className={`absolute inset-0 opacity-5 ${plan.gradient}`} />
-                  
+
                   {/* Icon */}
                   <div className="relative mb-4">
                     <span className="text-5xl">{plan.icon}</span>
@@ -150,11 +153,15 @@ const Pricing = () => {
 
                   {/* Plan Name */}
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                  
+
                   {/* Price */}
                   <div className="mb-4">
-                    <span className="text-4xl font-bold text-primary">{plan.price}</span>
-                    <span className="text-muted-foreground ml-2">/ {plan.duration}</span>
+                    <span className="text-4xl font-bold text-primary">
+                      {plan.price}
+                    </span>
+                    <span className="text-muted-foreground ml-2">
+                      / {plan.duration}
+                    </span>
                   </div>
 
                   {/* Features */}
@@ -169,7 +176,13 @@ const Pricing = () => {
 
                   {/* CTA Button */}
                   <button
-                    onClick={() => window.location.href = "/booking.html"}
+                    onClick={() => {
+                      if (plan.id === 1,2,3,4) {
+                        navigate("/payment"); // ✅ Redirect to Payment page
+                      } else {
+                        alert("This plan will be connected later!");
+                      }
+                    }}
                     className={`
                       w-full py-3 px-4 rounded-lg font-semibold
                       transition-all duration-300 transform
