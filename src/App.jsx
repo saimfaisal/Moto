@@ -12,16 +12,21 @@ import Contact from "./components/Contact/Contact.jsx"
 import Login from "./components/Auth/Login"
 import Signup from "./components/Auth/Signup"
 import Pricing from "./components/Pricing/Pricing.jsx"
+import PaymentMethod from "./components/PaymentMethod/PaymentMethod.jsx"   // ✅ Import PaymentMethod
 
 import AOS from "aos"
 import "aos/dist/aos.css"
 
 function App() {
   // Dark Mode Feature
-  const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark")
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
+  )
 
   // Authentication State
-  const [user, setUser] = useState(localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null)
+  const [user, setUser] = useState(
+    localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null
+  )
 
   // Modal States
   const [showLogin, setShowLogin] = useState(false)
@@ -111,6 +116,7 @@ function App() {
         <Route path="/detailing" element={<DetailingServices />} />
         <Route path="/carwash" element={<Carwash />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/payment" element={<PaymentMethod />} /> {/* ✅ Added Payment Route */}
       </Routes>
 
       {/* Authentication Modals */}
