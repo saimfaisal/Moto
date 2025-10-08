@@ -12,7 +12,7 @@ import Contact from "./components/Contact/Contact.jsx"
 import Login from "./components/Auth/Login"
 import Signup from "./components/Auth/Signup"
 import Pricing from "./components/Pricing/Pricing.jsx"
-import PaymentMethod from "./components/PaymentMethod/PaymentMethod.jsx"   // ✅ Import PaymentMethod
+import PaymentMethod from "./components/PaymentMethod/PaymentMethod.jsx"   
 
 import AOS from "aos"
 import "aos/dist/aos.css"
