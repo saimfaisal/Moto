@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
-import { HiOutlineMenu, HiX } from "react-icons/hi"; // ✅ Mobile menu icons
-import { NavLink } from "react-router-dom";
+import { HiOutlineMenu, HiX } from "react-icons/hi"; 
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext"; // ✅ useAuth import
 
 const Navlink = [
   { id: "1", name: "HOME", link: "/" },
@@ -13,17 +14,29 @@ const Navlink = [
   { id: "7", name: "CARWASH", link: "/carwash" },
 ];
 
-function Navbar({ theme, setTheme, onLoginClick, onSignupClick }) {
-  const [isOpen, setIsOpen] = useState(false); // ✅ Mobile menu state
+function Navbar({ theme, setTheme }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const { user, logout } = useAuth(); // ✅ get user & logout
+
+  // Handlers
+  const handleLogin = () => navigate("/login");
+  const handleSignup = () => navigate("/signup");
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/login");
+    } catch (err) {
+      console.error("Logout failed:", err.message);
+    }
+  };
 
   return (
     <nav className="shadow-md bg-white dark:bg-black dark:text-white duration-500">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-3">
           {/* Logo */}
-          <div>
-            <h1 className="text-3xl font-serif font-bold">MotoBath</h1>
-          </div>
+          <h1 className="text-3xl font-serif font-bold">MotoBath</h1>
 
           {/* Desktop Links */}
           <div className="hidden md:block">
@@ -63,20 +76,31 @@ function Navbar({ theme, setTheme, onLoginClick, onSignupClick }) {
               />
             )}
 
-            {/* Auth Buttons (hidden on small screens) */}
+            {/* Auth Buttons */}
             <div className="hidden md:flex gap-3">
-              <button
-                onClick={onLoginClick}
-                className="btn text-primary px-3 py-1 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
-              >
-                Login
-              </button>
-              <button
-                onClick={onSignupClick}
-                className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
-              >
-                Signup
-              </button>
+              {user ? (
+                <button
+                  onClick={handleLogout}
+                  className="btn text-red-600 px-3 py-2 rounded-md border-red-600 border-2 dark:bg-neutral-800 hover:bg-red-600 hover:text-white duration-300"
+                >
+                  Logout
+                </button>
+              ) : (
+                <>
+                  <button
+                    onClick={handleLogin}
+                    className="btn text-primary px-3 py-1 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300"
+                  >
+                    Login
+                  </button>
+                  <button
+                    onClick={handleSignup}
+                    className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300"
+                  >
+                    Signup
+                  </button>
+                </>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -89,7 +113,7 @@ function Navbar({ theme, setTheme, onLoginClick, onSignupClick }) {
           </div>
         </div>
 
-        {/* Mobile Menu (Dropdown) */}
+        {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden bg-white dark:bg-black px-4 py-4 border-t dark:border-neutral-700">
             <ul className="flex flex-col gap-4">
@@ -105,27 +129,47 @@ function Navbar({ theme, setTheme, onLoginClick, onSignupClick }) {
                           : "hover:text-primary"
                       }`
                     }
-                    onClick={() => setIsOpen(false)} // close menu after click
+                    onClick={() => setIsOpen(false)}
                   >
                     {data.name}
                   </NavLink>
                 </li>
               ))}
 
-              {/* Auth Buttons for Mobile */}
+              {/* Mobile Auth Buttons */}
               <div className="flex flex-col gap-2 mt-4">
-                <button
-                  onClick={onLoginClick}
-                  className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
-                >
-                  Login
-                </button>
-                <button
-                  onClick={onSignupClick}
-                  className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300 dark:hover:bg-primary"
-                >
-                  Signup
-                </button>
+                {user ? (
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setIsOpen(false);
+                    }}
+                    className="btn text-red-600 px-3 py-2 rounded-md border-red-600 border-2 dark:bg-neutral-800 hover:bg-red-600 hover:text-white duration-300"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => {
+                        handleLogin();
+                        setIsOpen(false);
+                      }}
+                      className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300"
+                    >
+                      Login
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleSignup();
+                        setIsOpen(false);
+                      }}
+                      className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300"
+                    >
+                      Signup
+                    </button>
+                  </>
+                )}
               </div>
             </ul>
           </div>
