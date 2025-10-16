@@ -12,27 +12,20 @@ import Contact from "./components/Contact/Contact.jsx"
 import Login from "./components/Auth/Login"
 import Signup from "./components/Auth/Signup"
 import Pricing from "./components/Pricing/Pricing.jsx"
-import PaymentMethod from "./components/PaymentMethod/PaymentMethod.jsx"   
+import PaymentMethod from "./components/PaymentMethod/PaymentMethod.jsx"
 
 import AOS from "aos"
 import "aos/dist/aos.css"
+import { useNavigate } from "react-router-dom"
 
 function App() {
-  // Dark Mode Feature
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
-  )
-
-  // Authentication State
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark")
   const [user, setUser] = useState(
     localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null
   )
 
-  // Modal States
-  const [showLogin, setShowLogin] = useState(false)
-  const [showSignup, setShowSignup] = useState(false)
-
   const element = document.documentElement
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (theme === "dark") {
@@ -42,20 +35,13 @@ function App() {
       element.classList.remove("dark")
       localStorage.setItem("theme", "light")
     }
-  }, [theme, element])
+  }, [theme])
 
-  // AOS Initialization
   useEffect(() => {
-    AOS.init({
-      offset: 100,
-      duration: 800,
-      easing: "ease-in-sine",
-      delay: 100,
-    })
+    AOS.init({ offset: 100, duration: 800, easing: "ease-in-sine", delay: 100 })
     AOS.refresh()
   }, [])
 
-  // Authentication Functions
   const handleLogin = (userData) => {
     setUser(userData)
     localStorage.setItem("user", JSON.stringify(userData))
@@ -71,30 +57,8 @@ function App() {
     localStorage.removeItem("user")
   }
 
-  const openLogin = () => {
-    setShowLogin(true)
-    setShowSignup(false)
-  }
-
-  const openSignup = () => {
-    setShowSignup(true)
-    setShowLogin(false)
-  }
-
-  const closeModals = () => {
-    setShowLogin(false)
-    setShowSignup(false)
-  }
-
-  const switchToSignup = () => {
-    setShowLogin(false)
-    setShowSignup(true)
-  }
-
-  const switchToLogin = () => {
-    setShowSignup(false)
-    setShowLogin(true)
-  }
+  const openLogin = () => navigate("/login")
+  const openSignup = () => navigate("/signup")
 
   return (
     <div>
@@ -107,7 +71,7 @@ function App() {
         onLogout={handleLogout}
       />
 
-      {/* React Router Pages */}
+      {/* ✅ All Routes */}
       <Routes>
         <Route path="/" element={<Hero theme={theme} />} />
         <Route path="/about" element={<About />} />
@@ -116,22 +80,12 @@ function App() {
         <Route path="/detailing" element={<DetailingServices />} />
         <Route path="/carwash" element={<Carwash />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/payment" element={<PaymentMethod />} /> {/* ✅ Added Payment Route */}
-      </Routes>
+        <Route path="/payment" element={<PaymentMethod />} />
 
-      {/* Authentication Modals */}
-      <Login
-        isOpen={showLogin}
-        onClose={closeModals}
-        onLogin={handleLogin}
-        onSwitchToSignup={switchToSignup}
-      />
-      <Signup
-        isOpen={showSignup}
-        onClose={closeModals}
-        onSignup={handleSignup}
-        onSwitchToLogin={switchToLogin}
-      />
+        {/* ✅ Auth Pages as Separate Routes */}
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/signup" element={<Signup onSignup={handleSignup} />} />
+      </Routes>
     </div>
   )
 }

@@ -11,7 +11,7 @@ const Hero = ({theme}) => {
   //     section.scrollIntoView({ behavior: "smooth" });
   //   }}
   return (
-    <div className='dark:bg-black dark:text-white duration-300 relative -z-20'>
+    <div className='dark:bg-black dark:text-white duration-300 relative -z-20 overflow-hidden' >
         <div className="container min-h-[620px] flex">
             <div className='grid
             place-items-center grid-cols-1 sm:grid-cols-2'>

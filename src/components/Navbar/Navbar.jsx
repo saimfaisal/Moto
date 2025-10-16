@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
 import { HiOutlineMenu, HiX } from "react-icons/hi"; 
-import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext"; // ✅ useAuth import
+import { NavLink } from "react-router-dom";
 
 const Navlink = [
   { id: "1", name: "HOME", link: "/" },
@@ -14,22 +13,8 @@ const Navlink = [
   { id: "7", name: "CARWASH", link: "/carwash" },
 ];
 
-function Navbar({ theme, setTheme }) {
+function Navbar({ theme, setTheme, user, onLoginClick, onSignupClick, onLogout }) {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
-  const { user, logout } = useAuth(); // ✅ get user & logout
-
-  // Handlers
-  const handleLogin = () => navigate("/login");
-  const handleSignup = () => navigate("/signup");
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate("/login");
-    } catch (err) {
-      console.error("Logout failed:", err.message);
-    }
-  };
 
   return (
     <nav className="shadow-md bg-white dark:bg-black dark:text-white duration-500">
@@ -80,7 +65,7 @@ function Navbar({ theme, setTheme }) {
             <div className="hidden md:flex gap-3">
               {user ? (
                 <button
-                  onClick={handleLogout}
+                  onClick={onLogout}
                   className="btn text-red-600 px-3 py-2 rounded-md border-red-600 border-2 dark:bg-neutral-800 hover:bg-red-600 hover:text-white duration-300"
                 >
                   Logout
@@ -88,13 +73,13 @@ function Navbar({ theme, setTheme }) {
               ) : (
                 <>
                   <button
-                    onClick={handleLogin}
+                    onClick={onLoginClick}
                     className="btn text-primary px-3 py-1 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300"
                   >
                     Login
                   </button>
                   <button
-                    onClick={handleSignup}
+                    onClick={onSignupClick}
                     className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300"
                   >
                     Signup
@@ -141,7 +126,7 @@ function Navbar({ theme, setTheme }) {
                 {user ? (
                   <button
                     onClick={() => {
-                      handleLogout();
+                      onLogout();
                       setIsOpen(false);
                     }}
                     className="btn text-red-600 px-3 py-2 rounded-md border-red-600 border-2 dark:bg-neutral-800 hover:bg-red-600 hover:text-white duration-300"
@@ -152,7 +137,7 @@ function Navbar({ theme, setTheme }) {
                   <>
                     <button
                       onClick={() => {
-                        handleLogin();
+                        onLoginClick();
                         setIsOpen(false);
                       }}
                       className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300"
@@ -161,7 +146,7 @@ function Navbar({ theme, setTheme }) {
                     </button>
                     <button
                       onClick={() => {
-                        handleSignup();
+                        onSignupClick();
                         setIsOpen(false);
                       }}
                       className="btn text-primary px-3 py-2 rounded-md border-primary border-2 dark:bg-neutral-800 hover:bg-primary hover:text-white duration-300"
